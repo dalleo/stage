@@ -9,30 +9,19 @@ volatile int count; //This integer needs to be set as volatile to ensure it upda
 int BluetoothData; // the data given from Computer
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(flowPin, INPUT);           //Sets the pin as an input
   attachInterrupt(0, Flow, RISING);  //Configures interrupt 0 (pin 2 on the Arduino Uno) to run the function "Flow"  
   Serial.begin(9600);  //Start Serial
   Genotronex.begin(9600);
 }
 void loop() {
-  // put your main code here, to run repeatedly:  
   count = 0;      // Reset the counter so we start counting from 0 again
   interrupts();   //Enables interrupts on the Arduino
   delay (1000);   //Wait 1 second 
   noInterrupts(); //Disable the interrupts on the Arduino
   
-  //Start the math
-  //flowRate = (count * 2.25);        //Take counted pulses in the last second and multiply by 2.25mL 
-  //flowRate = flowRate * 60;         //Convert seconds to minutes, giving you mL / Minute
-  //flowRate = flowRate / 1000;       //Convert mL to Liters, giving you Liters / Minute
-
-  //flowRate = count*1,43/1000;       // NbTour *60 /4,1Q donne des L/heure
   flowRate = (count/12.3)/60.0;       // NbTour *60 /4,1Q donne des L/heure
-  //Genotronex.println(flowRate);
-
   compteur=compteur + flowRate;
-
   //Genotronex.println(flowRate);         //Print the variable flowRate to Serial
   if (Genotronex.available()){
      BluetoothData=Genotronex.read();
