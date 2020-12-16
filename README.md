@@ -1,6 +1,6 @@
 # stage
 
-On retrouve dans ce depot les differents bout de code que j'ai fait avant dobtenir la version final ainsi que les schema de branchement des differents modules.
+On retrouve dans ce depot les differents bout de code que j'ai fais avant dobtenir la version final ainsi que les schemas de branchement des differents modules.
 
 Les code finaux sont dans le dosser "final"
 
